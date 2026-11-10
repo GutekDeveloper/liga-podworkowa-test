@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081321">
+  <meta name="description" content="Wyniki, tabela i terminarz ligi podwórkowej.">
+  <title>Liga podwórkowa — tabela i wyniki</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07111f;--panel:#101e30;--panel2:#14243a;--line:#263a54;--text:#f3f6fb;--muted:#91a4bc;--green:#35d07f;--blue:#68a7ff;--gold:#f6ca67}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 20% -10%,#1a3b5c 0,transparent 38%),radial-gradient(ellipse at 100% 24%,#123b37 0,transparent 26%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 34px));margin:0 auto}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#38d889,#12875b);font-size:23px;box-shadow:0 8px 28px #24c77d35}.brand small{color:var(--green);font-weight:800;font-size:10px;letter-spacing:.16em}.brand strong{display:block;font-size:18px;line-height:1.2}.admin-link{border:1px solid var(--line);padding:9px 13px;border-radius:10px;color:#c1d0e2;font-size:12px;font-weight:700}.admin-link:hover{border-color:#5a7899;color:white}
+    .hero{padding:44px 0 28px;display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch}.hero-main,.hero-side{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#142943ed,#0c1a2bec);padding:27px;position:relative;overflow:hidden}.hero-main:after{content:'⚽';position:absolute;right:24px;bottom:-33px;font-size:150px;opacity:.055;transform:rotate(-18deg)}.kicker{color:var(--green);letter-spacing:.16em;font-size:11px;font-weight:850}.hero h1{font-size:clamp(32px,5vw,53px);line-height:1.03;letter-spacing:-.045em;margin:12px 0}.hero p{max-width:520px;color:#a7b9cd;margin:0}.season{display:inline-flex;align-items:center;gap:7px;border:1px solid #315b4b;background:#133729;color:#aaf0c8;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;margin-top:22px}.hero-side{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#1b382f,#10271f)}.hero-side .label{font-size:11px;color:#a4d9b9;font-weight:800;letter-spacing:.13em}.hero-side strong{font-size:35px;line-height:1.05;display:block;margin:13px 0 4px}.hero-side p{font-size:13px;color:#a5c4b0}.live-dot{width:8px;height:8px;background:var(--green);display:inline-block;border-radius:50%;box-shadow:0 0 0 5px #35d07f20}
+    .tabs{display:flex;gap:7px;border-bottom:1px solid var(--line);margin:8px 0 19px;overflow-x:auto}.tabs a{white-space:nowrap;padding:12px 14px;color:var(--muted);font-size:13px;font-weight:750;border-bottom:2px solid transparent}.tabs a:hover,.tabs a.active{color:white;border-color:var(--green)}.section{margin:24px 0 32px;scroll-margin-top:15px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:14px}.section-head h2{margin:0;font-size:21px;letter-spacing:-.025em}.section-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.updated{color:var(--muted);font-size:11px;white-space:nowrap}
+    .columns{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:start}.card{background:linear-gradient(160deg,#122239,#0b1929);border:1px solid var(--line);border-radius:18px;overflow:hidden}.card-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.card-head strong{font-size:14px}.card-head span{font-size:11px;color:var(--muted)}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:470px}th{font-size:10px;letter-spacing:.08em;color:#8298b2;text-align:center;font-weight:800;padding:12px 9px;background:#ffffff04}th:nth-child(2){text-align:left}td{padding:12px 9px;border-top:1px solid #ffffff0b;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}td:nth-child(2){text-align:left}.rank{color:#91a4bc;font-weight:800;width:34px}.team-cell{display:flex;align-items:center;gap:10px;min-width:135px}.crest{width:29px;height:29px;border-radius:9px;background:#1b3048;display:grid;place-items:center;overflow:hidden;flex:none;font-size:15px}.crest img{width:100%;height:100%;object-fit:contain}.team-name{font-weight:750}.points{font-weight:900;color:#aaf0c8}.top3 .rank{color:var(--gold)}.gd-positive{color:#8de3b0}.gd-negative{color:#ff9da6}
+    .match-list{display:grid;gap:9px;padding:13px}.match-card{padding:13px;background:#0b1929;border:1px solid #21364e;border-radius:13px}.match-date{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:10px;margin-bottom:10px}.match-body{display:grid;grid-template-columns:minmax(0,1fr) 75px minmax(0,1fr);align-items:center;gap:7px}.club{display:flex;align-items:center;gap:7px;min-width:0}.club.away{justify-content:flex-end;text-align:right}.club .crest{width:27px;height:27px}.club-name{font-size:12px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.score{font-size:20px;font-weight:950;text-align:center;letter-spacing:.03em;font-variant-numeric:tabular-nums}.score.pending{font-size:12px;color:var(--muted);letter-spacing:0}.status{font-size:9px;color:#a9eac4;background:#143a2c;border-radius:99px;padding:3px 7px;font-weight:800}.status.scheduled{background:#1b3048;color:#a9c7ea}
+    .teams-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.team-card{display:flex;align-items:center;gap:13px;padding:15px;background:linear-gradient(145deg,#14263b,#0b1929);border:1px solid var(--line);border-radius:15px}.team-card .crest{width:44px;height:44px;border-radius:12px}.team-card strong{display:block;font-size:13px}.team-card small{color:var(--muted);font-size:10px}.empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}.footer{border-top:1px solid #ffffff12;color:#71869f;padding:25px 0 35px;font-size:11px;display:flex;justify-content:space-between;gap:12px}.demo{display:none;padding:9px 12px;margin:12px 0 0;background:#3a2b13;border:1px solid #7b5b25;color:#ffe0a0;border-radius:10px;font-size:12px}.demo.show{display:block}.error{display:none;background:#3d1c29;border:1px solid #713345;color:#ffc0c7;border-radius:10px;padding:10px 12px;font-size:12px;margin:12px 0}.error.show{display:block}.refresh{border:1px solid var(--line);border-radius:9px;padding:7px 10px;background:#14263b;color:#c6d5e8;font-size:11px;font-weight:800;cursor:pointer}.refresh:hover{border-color:#5980a8}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}.hero-side{min-height:150px}.columns{grid-template-columns:1fr}.teams-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.wrap{width:calc(100% - 22px)}.topbar{height:66px}.brand-mark{width:38px;height:38px}.brand strong{font-size:16px}.admin-link{padding:8px 10px}.hero{padding:24px 0 20px}.hero-main,.hero-side{padding:20px;border-radius:18px}.hero h1{font-size:37px}.hero-side{min-height:135px}.section-head h2{font-size:18px}.teams-grid{grid-template-columns:1fr}.footer{flex-direction:column}.updated{white-space:normal;text-align:right}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="brand-mark">⚽</span><span><small>AMATORSKIE ROZGRYWKI</small><strong>Liga podwórkowa</strong></span></a>
+      <a class="admin-link" id="adminLink" href="#">PANEL ADMINA ↗</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-main">
+          <div class="kicker">WITAMY NA BOISKU</div>
+          <h1>Liczy się<br>każdy mecz.</h1>
+          <p>Wyniki, tabela i terminarz w jednym miejscu. Sprawdź, kto prowadzi w naszej lidze.</p>
+          <div class="season">✦ SEZON 2026 / 2027</div>
+        </div>
+        <div class="hero-side">
+          <div><div class="label"><span class="live-dot"></span> &nbsp; ROZGRYWKI NA ŻYWO</div><strong id="heroTeams">3 drużyny</strong><p id="heroMatches">Mecze i wyniki aktualizowane na bieżąco.</p></div>
+          <div class="label">JEDNA LIGA. JEDEN CEL. ZWYCIĘSTWO.</div>
+        </div>
+      </section>
+
+      <div id="demoNotice" class="demo">TRYB PODGLĄDU — wyświetlane są przykładowe dane. Po podłączeniu arkusza Google zobaczysz prawdziwe wyniki.</div>
+      <div id="errorNotice" class="error"></div>
+
+      <nav class="tabs">
+        <a class="active" href="#tabela">Tabela</a><a href="#mecze">Mecze</a><a href="#druzyny">Drużyny</a>
+      </nav>
+
+      <section class="section" id="tabela">
+        <div class="section-head"><div><h2>Tabela ligowa</h2><p>Klasyfikacja na podstawie rozegranych spotkań</p></div><div class="updated" id="updatedAt">Dane demonstracyjne</div></div>
+        <div class="columns">
+          <div class="card">
+            <div class="card-head"><strong>KLASYFIKACJA</strong><span>3 PKT ZA ZWYCIĘSTWO</span></div>
+            <div class="table-wrap"><table><thead><tr><th>#</th><th>DRUŻYNA</th><th>M</th><th>W</th><th>R</th><th>P</th><th>BZ:BS</th><th>+/-</th><th>PKT</th></tr></thead><tbody id="standingsBody"></tbody></table></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><strong>OSTATNIE WYNIKI</strong><span>ROZEGRANE</span></div>
+            <div id="recentMatches" class="match-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mecze">
+        <div class="section-head"><div><h2>Terminarz i wyniki</h2><p>Wszystkie spotkania ligi</p></div><button class="refresh" id="refreshBtn" type="button">↻ ODŚWIEŻ</button></div>
+        <div class="card"><div id="allMatches" class="match-list"></div></div>
+      </section>
+
+      <section class="section" id="druzyny">
+        <div class="section-head"><div><h2>Uczestnicy ligi</h2><p>Wszystkie drużyny biorące udział w rozgrywkach</p></div></div>
+        <div id="teamsGrid" class="teams-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>© <span id="year"></span> Liga podwórkowa</span><span>Strona ligi • Aktualne wyniki w jednym miejscu</span></footer>
+  </div>
+<script>
+  // Po wdrożeniu Google Apps Script wklej tutaj adres wdrożenia zakończony /exec.
+  const API_URL = 'https://script.google.com/macros/s/AKfycbyiozFR4oGIamacvr9Wj1Ac9KoHyjf-uCf8PwEY08mt_dgtgI_nfIpzVhZQj9UFI80/exec';
+  const DEMO = {
+    ok: true,
+    updatedAt: new Date().toISOString(),
+    teams: [
+      {id:'demo-orly',name:'FC Orły',crestUrl:''},
+      {id:'demo-wilki',name:'KS Wilki',crestUrl:''},
+      {id:'demo-real',name:'Real Podwórko',crestUrl:''}
+    ],
+    matches: [
+      {id:'demo-1',date:'2026-11-05T17:00',homeTeamId:'demo-orly',awayTeamId:'demo-wilki',homeGoals:2,awayGoals:1,status:'FINISHED'},
+      {id:'demo-2',date:'2026-11-06T17:00',homeTeamId:'demo-real',awayTeamId:'demo-orly',homeGoals:0,awayGoals:0,status:'FINISHED'},
+      {id:'demo-3',date:'2026-11-12T16:30',homeTeamId:'demo-wilki',awayTeamId:'demo-real',homeGoals:null,awayGoals:null,status:'SCHEDULED'}
+    ]
+  };
+
+  const $ = id => document.getElementById(id);
+  $('year').textContent = new Date().getFullYear();
+  $('adminLink').href = API_URL.startsWith('https://') ? API_URL + '?admin=1' : '#';
+  $('adminLink').style.opacity = API_URL.startsWith('https://') ? '1' : '.5';
+  $('adminLink').title = API_URL.startsWith('https://') ? 'Otwórz panel administratora' : 'Najpierw podłącz adres Apps Script w index.html';
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function dateLabel(value) {
+    const date = new Date(value);
+    if (isNaN(date.getTime())) return String(value || 'Termin nieustalony');
+    return new Intl.DateTimeFormat('pl-PL',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(date);
+  }
+  function crest(url, name) {
+    return `<span class="crest">${url ? `<img src="${escapeHtml(url)}" alt="Herb ${escapeHtml(name)}" loading="lazy" onerror="this.parentElement.textContent='⚽'">` : '⚽'}</span>`;
+  }
+  function calculateStandings(data) {
+    const stats = {};
+    data.teams.forEach(team => stats[team.id] = {teamId:team.id,name:team.name,crestUrl:team.crestUrl||'',played:0,wins:0,draws:0,losses:0,goalsFor:0,goalsAgainst:0,goalDifference:0,points:0});
+    data.matches.forEach(match => {
+      if (match.status !== 'FINISHED' || match.homeGoals == null || match.awayGoals == null) return;
+      const h=stats[match.homeTeamId], a=stats[match.awayTeamId]; if(!h||!a)return;
+      h.played++;a.played++;h.goalsFor+=Number(match.homeGoals);h.goalsAgainst+=Number(match.awayGoals);a.goalsFor+=Number(match.awayGoals);a.goalsAgainst+=Number(match.homeGoals);
+      if(Number(match.homeGoals)>Number(match.awayGoals)){h.wins++;h.points+=3;a.losses++;}
+      else if(Number(match.homeGoals)<Number(match.awayGoals)){a.wins++;a.points+=3;h.losses++;}
+      else{h.draws++;a.draws++;h.points++;a.points++;}
+    });
+    return Object.values(stats).map(s=>({...s,goalDifference:s.goalsFor-s.goalsAgainst})).sort((a,b)=>b.points-a.points||b.goalDifference-a.goalDifference||b.goalsFor-a.goalsFor||a.name.localeCompare(b.name,'pl'));
+  }
+  function enrichMatches(data) {
+    const byId = Object.fromEntries(data.teams.map(t=>[t.id,t]));
+    return data.matches.map(m=>({...m,homeTeam:byId[m.homeTeamId]||{name:'Nieznana drużyna'},awayTeam:byId[m.awayTeamId]||{name:'Nieznana drużyna'}}));
+  }
+  function matchCard(match) {
+    const finished = match.status === 'FINISHED' && match.homeGoals != null && match.awayGoals != null;
+    const home = match.homeTeam, away = match.awayTeam;
+    return `<article class="match-card"><div class="match-date"><span>${escapeHtml(dateLabel(match.date))}</span><span class="status ${finished?'':'scheduled'}">${finished?'ZAKOŃCZONY':'ZAPLANOWANY'}</span></div><div class="match-body"><div class="club">${crest(home.crestUrl,home.name)}<span class="club-name">${escapeHtml(home.name)}</span></div><div class="score ${finished?'':'pending'}">${finished?`${escapeHtml(match.homeGoals)} : ${escapeHtml(match.awayGoals)}`:'VS'}</div><div class="club away"><span class="club-name">${escapeHtml(away.name)}</span>${crest(away.crestUrl,away.name)}</div></div></article>`;
+  }
+  function render(data, demoMode) {
+    if (!data || !data.ok) throw new Error(data && data.message ? data.message : 'Nie udało się pobrać danych turnieju.');
+    const teams=data.teams||[], matches=enrichMatches(data), standings=calculateStandings(data);
+    $('heroTeams').textContent = `${teams.length} ${teams.length===1?'drużyna':(teams.length>=2&&teams.length<=4?'drużyny':'drużyn')}`;
+    const finished=matches.filter(m=>m.status==='FINISHED').length;
+    $('heroMatches').textContent = `${finished} rozegranych spotkań • ${matches.length-finished} w terminarzu`;
+    $('updatedAt').textContent = data.updatedAt ? 'Aktualizacja: '+new Intl.DateTimeFormat('pl-PL',{hour:'2-digit',minute:'2-digit'}).format(new Date(data.updatedAt)) : '';
+    $('demoNotice').classList.toggle('show',!!demoMode);
+    $('standingsBody').innerHTML = standings.length ? standings.map((s,i)=>`<tr class="${i<3?'top3':''}"><td class="rank">${i+1}</td><td><div class="team-cell">${crest(s.crestUrl,s.name)}<span class="team-name">${escapeHtml(s.name)}</span></div></td><td>${s.played}</td><td>${s.wins}</td><td>${s.draws}</td><td>${s.losses}</td><td>${s.goalsFor}:${s.goalsAgainst}</td><td class="${s.goalDifference>0?'gd-positive':s.goalDifference<0?'gd-negative':''}">${s.goalDifference>0?'+':''}${s.goalDifference}</td><td class="points">${s.points}</td></tr>`).join('') : '<tr><td colspan="9" class="empty">Brak drużyn w tabeli.</td></tr>';
+    const recent=matches.filter(m=>m.status==='FINISHED').sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,4);
+    $('recentMatches').innerHTML = recent.length ? recent.map(matchCard).join('') : '<div class="empty">Nie rozegrano jeszcze żadnego meczu.</div>';
+    const ordered=matches.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+    $('allMatches').innerHTML = ordered.length ? ordered.map(matchCard).join('') : '<div class="empty">Nie dodano jeszcze żadnego meczu.</div>';
+    $('teamsGrid').innerHTML = teams.length ? teams.map(team=>`<article class="team-card">${crest(team.crestUrl,team.name)}<div><strong>${escapeHtml(team.name)}</strong><small>Uczestnik ligi</small></div></article>`).join('') : '<div class="empty">Brak drużyn.</div>';
+  }
+  function loadData() {
+    $('errorNotice').classList.remove('show');
+    if (!API_URL.startsWith('https://')) { render(DEMO,true); return; }
+    // JSONP pozwala pobrać publiczne dane z Apps Script bez problemów z CORS.
+    window.__tournamentCallback = data => {
+      try { render(data,false); }
+      catch(error) { $('errorNotice').textContent=error.message; $('errorNotice').classList.add('show'); }
+      if (script && script.parentNode) script.parentNode.removeChild(script);
+    };
+    const script=document.createElement('script');
+    script.src=API_URL+'?callback=__tournamentCallback&_='+Date.now();
+    script.onerror=()=>{
+      $('errorNotice').textContent='Nie udało się połączyć z bazą turnieju. Sprawdź adres Apps Script i ustawienia wdrożenia.';
+      $('errorNotice').classList.add('show');
+      if(script.parentNode)script.parentNode.removeChild(script);
+    };
+    document.head.appendChild(script);
+  }
+  $('refreshBtn').addEventListener('click',loadData);
+  document.querySelectorAll('.tabs a').forEach(link=>link.addEventListener('click',()=>{document.querySelectorAll('.tabs a').forEach(a=>a.classList.remove('active'));link.classList.add('active')}));
+  loadData();
+  // Publiczna strona sama odświeża dane co minutę.
+  setInterval(loadData,60000);
+</script>
+</body>
+</html>
